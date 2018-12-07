@@ -187,7 +187,10 @@ class YmlBuilder
             $result .= '        <model>'. $this->prepareValue($offer->getModel()) . '</model>' . PHP_EOL;
         }
         if ($offer->hasPictures()) {
+            $current = "";
             foreach ($offer->getPictures() as $picture) {
+                if ($picture == $current) continue;
+                $current = $picture;
                 $result .= '        <picture>' . $this->prepareValue($picture) . '</picture>' . PHP_EOL;
             }
         }
